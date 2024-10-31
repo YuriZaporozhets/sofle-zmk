@@ -26,21 +26,23 @@
             then-layer = <ADJUST>;
         };
     };
-// Добавил макросы. Выполняют нажатие комбинаций клавиш
+
+    // Добавил макросы. Выполняют нажатие комбинаций клавиш
+
     macros {
-        minimize_all: minimize_all {                         // Определение макроса с меткой "minimize_all" для сворачивания всех окон
+        minimize_all: minimize_all {
             compatible = "zmk,behavior-macro";               // Указываем, что это макрос ZMK
             label = "MINIMIZE_ALL";                          // Лейбл (метка) для использования в keymap Будет использоваться как &MINIMIZE_ALL
             #binding-cells = <0>;                            // Макрос не принимает параметров
-            bindings = <&kp LGUI>, <&kp D>;                  // Последовательность действий: нажатие LGUI (Win), затем D
+            bindings = <&kp LGUI &kp D>;                  // Последовательность действий: нажатие LGUI (Win), затем D
             wait-ms = <10>;                                  // Задержка 10 мс между нажатиями LGUI и D
         };
 
-        screenshot: screenshot {                             // Определение макроса с меткой "screenshot" для захвата экрана
+        screenshot: screenshot {
             compatible = "zmk,behavior-macro";               // Указываем, что это макрос ZMK
             label = "SCREENSHOT";                            // Лейбл для использования в keymap. Будет использоваться как &SCREENSHOT
             #binding-cells = <0>;                            // Макрос не принимает параметров
-            bindings = <&kp LGUI>, <&kp LSHIFT>, <&kp S>;    // Последовательность действий: нажатие LGUI (Win), LSHIFT, затем S
+            bindings = <&kp LGUI &kp LSHIFT &kp S>;    // Последовательность действий: нажатие LGUI (Win), LSHIFT, затем S
             wait-ms = <10>;                                  // Задержка 10 мс между каждым нажатием клавиши в макросе
         };
     };
@@ -61,11 +63,11 @@
             //               | GUI | DEL  |LSHIFT| LOWER|  ENTER |  | SPACE | RAISE|BACKSPC| ALT   | GUI  |
 
             bindings = <
-&kp GRAVE  &kp N1  &kp N2    &kp N3   &kp N4          &kp N5                                    &kp N6     &kp N7         &kp N8              &kp N9        &kp N0    &kp EQUAL
-&kp ESC    &kp Q   &kp W     &kp E    &kp R           &kp T                                     &kp Y      &kp U          &kp I               &kp O         &kp P     &kp LEFT_BRACKET
-&kp TAB    &kp A   &kp S     &kp D    &kp F           &kp G                                     &kp H      &kp J          &kp K               &kp L         &kp SEMI  &kp APOSTROPHE
+&kp GRAVE  &kp N1  &kp N2    &kp N3   &kp N4          &kp N5                                &kp N6     &kp N7         &kp N8              &kp N9        &kp N0    &kp EQUAL
+&kp ESC    &kp Q   &kp W     &kp E    &kp R           &kp T                                 &kp Y      &kp U          &kp I               &kp O         &kp P     &kp LEFT_BRACKET
+&kp TAB    &kp A   &kp S     &kp D    &kp F           &kp G                                 &kp H      &kp J          &kp K               &kp L         &kp SEMI  &kp APOSTROPHE
 &kp LCTRL  &kp Z   &kp X     &kp C    &kp V           &kp B      &screenshot    &kp K_MUTE  &kp N      &kp M          &kp COMMA           &kp DOT       &kp FSLH  &kp BACKSLASH
-                   &kp LGUI  &kp DEL  &kp LEFT_SHIFT  &kp SPACE  &kp RET            &mo 1       &kp SPACE  &kp BACKSPACE  &kp K_CONTEXT_MENU  &kp LEFT_ALT
+                   &kp LGUI  &kp DEL  &kp LEFT_SHIFT  &kp SPACE  &kp RET        &mo 1       &kp SPACE  &kp BACKSPACE  &kp K_CONTEXT_MENU  &kp LEFT_ALT
             >;
 
             sensor-bindings =
@@ -85,11 +87,11 @@
             //               |     |      |      |      |        |  |       |      |       |       |      |
 
             bindings = <
-&kp F12       &kp F1          &kp F2          &kp F3        &kp F4           &kp F5                            &kp F6        &kp F7        &kp F8        &kp F9        &kp F10               &kp F11
-&kp GRAVE     &none           &kp PAGE_UP     &kp UP_ARROW  &kp PAGE_DOWN    &none                             &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp SLASH     &kp LEFT_BRACKET      &kp RIGHT_BRACKET
-&kp QUESTION  &kp EXCL        &kp LEFT_ARROW  &kp DOWN      &kp RIGHT_ARROW  &none                             &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp ASTERISK  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS
-&trans        &kp UNDERSCORE  &none           &none         &none            &none   &bt BT_SEL 0  &bt BT_SEL 1  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp PLUS      &kp LEFT_BRACE        &kp RIGHT_BRACE
-                              &minimize_all           &trans        &trans           &trans  &trans            &none   &trans        &kp NUMBER_0  &kp KP_COMMA  &kp MINUS
+&kp F12       &kp F1          &kp F2          &kp F3         &kp F4           &kp F5                                &kp F6        &kp F7        &kp F8        &kp F9             &kp F10               &kp F11
+&kp GRAVE     &none           &kp PAGE_UP     &kp UP_ARROW   &kp PAGE_DOWN    &none                                 &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp LS(KP_DIVIDE)  &kp LEFT_BRACKET      &kp RIGHT_BRACKET
+&kp QUESTION  &kp EXCL        &kp LEFT_ARROW  &kp DOWN       &kp RIGHT_ARROW  &none                                 &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp ASTERISK       &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS
+&trans        &kp UNDERSCORE  &kp COLON       &kp SEMICOLON  &none            &none   &bt BT_SEL 0    &bt BT_SEL 1  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp PLUS           &kp LEFT_BRACE        &kp RIGHT_BRACE
+                              &minimize_all   &trans         &trans           &trans  &trans          &none         &trans        &kp NUMBER_0  &kp KP_COMMA  &kp MINUS
             >;
 
             sensor-bindings =
