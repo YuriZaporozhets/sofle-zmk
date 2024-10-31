@@ -30,20 +30,20 @@
     // Добавил макросы. Выполняют нажатие комбинаций клавиш
 
     macros {
-        minimize_all: minimize_all {
-            compatible = "zmk,behavior-macro";               // Указываем, что это макрос ZMK
-            label = "MINIMIZE_ALL";                          // Лейбл (метка) для использования в keymap Будет использоваться как &MINIMIZE_ALL
-            #binding-cells = <0>;                            // Макрос не принимает параметров
-            bindings = <&kp LGUI &kp D>;                  // Последовательность действий: нажатие LGUI (Win), затем D
-            wait-ms = <10>;                                  // Задержка 10 мс между нажатиями LGUI и D
+      screenshot: screenshot {
+            compatible = "zmk,behavior-macro";
+            label = "SCREENSHOT";
+            #binding-cells = <0>;
+            bindings = <&combo_screenshot>;
         };
+    };
 
-        screenshot: screenshot {
-            compatible = "zmk,behavior-macro";               // Указываем, что это макрос ZMK
-            label = "SCREENSHOT";                            // Лейбл для использования в keymap. Будет использоваться как &SCREENSHOT
-            #binding-cells = <0>;                            // Макрос не принимает параметров
-            bindings = <&kp LGUI &kp LSHIFT &kp S>;    // Последовательность действий: нажатие LGUI (Win), LSHIFT, затем S
-            wait-ms = <10>;                                  // Задержка 10 мс между каждым нажатием клавиши в макросе
+    combos {
+        compatible = "zmk,combos";
+
+        combo_screenshot {
+            key-positions = <27 10 17>; // Позиции LGUI, LSHIFT и S
+            bindings = <&kp HID_USAGE_SYSCTL_PRINT_SCREEN>; // Print Screen код
         };
     };
 
@@ -56,11 +56,11 @@
             display-name = "default";
 
             // ------------------------------------------------------------------------------------------------------------
-            // |   `   |  1  |  2  |  3   |  4   |  5   |                   |  6   |  7    |  8    |  9   |   0   |   =   |
-            // |  ESC  |  Q  |  W  |  E   |  R   |  T   |                   |  Y   |  U    |  I    |  O   |   P   |   [   |
-            // |  TAB  |  A  |  S  |  D   |  F   |  G   |                   |  H   |  J    |  K    |  L   |   ;   |   ]   |
-            // | LCTRL |  Z  |  X  |  C   |  V   |  B   |  MUTE  |  |       |  N   |  M    |  ,    |  .   |   /   |   '   |
-            //               | GUI | DEL  |LSHIFT| LOWER|  ENTER |  | SPACE | RAISE|BACKSPC| ALT   | GUI  |
+            // |   `   |  1  |  2  |  3   |  4   |  5   |                       |  6   |  7    |  8    |  9   |   0   |   =   |
+            // |  ESC  |  Q  |  W  |  E   |  R   |  T   |                       |  Y   |  U    |  I    |  O   |   P   |   [   |
+            // |  TAB  |  A  |  S  |  D   |  F   |  G   |                       |  H   |  J    |  K    |  L   |   ;   |   ]   |
+            // | LCTRL |  Z  |  X  |  C   |  V   |  B   |  MUTE  |  |  bt_clr   |  N   |  M    |  ,    |  .   |   /   |   '   |
+            //               | GUI | DEL  |LSHIFT| SPACE|  ENTER |  | Lower 1   | SPACE|BACKSPC| MENU  | ALT  |
 
             bindings = <
 &kp GRAVE  &kp N1  &kp N2    &kp N3   &kp N4          &kp N5                                &kp N6     &kp N7         &kp N8              &kp N9        &kp N0    &kp EQUAL
@@ -91,7 +91,7 @@
 &kp GRAVE     &none           &kp PAGE_UP     &kp UP_ARROW   &kp PAGE_DOWN    &none                                 &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp LS(KP_DIVIDE)  &kp LEFT_BRACKET      &kp RIGHT_BRACKET
 &kp QUESTION  &kp EXCL        &kp LEFT_ARROW  &kp DOWN       &kp RIGHT_ARROW  &none                                 &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp ASTERISK       &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS
 &trans        &kp UNDERSCORE  &kp COLON       &kp SEMICOLON  &none            &none   &bt BT_SEL 0    &bt BT_SEL 1  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp PLUS           &kp LEFT_BRACE        &kp RIGHT_BRACE
-                              &minimize_all   &trans         &trans           &trans  &trans          &none         &trans        &kp NUMBER_0  &kp KP_COMMA  &kp MINUS
+                              &trans   &trans         &trans           &trans  &trans          &none         &trans        &kp NUMBER_0  &kp KP_COMMA  &kp MINUS
             >;
 
             sensor-bindings =
