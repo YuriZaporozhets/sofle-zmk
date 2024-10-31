@@ -26,11 +26,13 @@
             then-layer = <ADJUST>;
         };
     };
-     macros {minimize_all: minimize_all {
+
+    macros {
+        minimize_all: minimize_all {
             compatible = "zmk,behavior-macro";
             label = "MINIMIZE_ALL";
             #binding-cells = <0>;
-            bindings = <&kp LGUI>, <&kp D>;
+            bindings = <&kp LGUI &kp D>;
             wait-ms = <10>;
         };
     };
@@ -79,7 +81,7 @@
 &kp GRAVE     &none           &kp PAGE_UP     &kp UP_ARROW  &kp PAGE_DOWN    &none                        &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp SLASH     &kp LEFT_BRACKET      &kp RIGHT_BRACKET
 &kp QUESTION  &kp EXCL        &kp LEFT_ARROW  &kp DOWN      &kp RIGHT_ARROW  &none                        &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp ASTERISK  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS
 &trans        &kp UNDERSCORE  &none           &none         &none            &none   &trans       &trans  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp PLUS      &kp LEFT_BRACE        &kp RIGHT_BRACE
-                              &kp MINIMIZE_ALL          &trans        &trans           &trans  &kp ENTER    &none   &trans        &kp NUMBER_0  &kp KP_COMMA  &kp MINUS
+                              &none           &trans        &trans           &trans  &kp ENTER    &none   &trans        &kp NUMBER_0  &kp KP_COMMA  &kp MINUS
             >;
 
             sensor-bindings =
