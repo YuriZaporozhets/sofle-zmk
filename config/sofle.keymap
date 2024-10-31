@@ -43,6 +43,19 @@
             bindings = <&kp LGUI>, <&kp LSHIFT>, <&kp S>;    // Последовательность действий: нажатие LGUI (Win), LSHIFT, затем S
             wait-ms = <10>;                                  // Задержка 10 мс между каждым нажатием клавиши в макросе
         };
+        bt_next: bt_next {
+            compatible = "zmk,behavior-macro";
+            label = "BT_NEXT";
+            #binding-cells = <0>;
+            bindings = <&bt BT_NXT>;
+        };
+
+        bt_prev: bt_prev {
+            compatible = "zmk,behavior-macro";
+            label = "BT_PREV";
+            #binding-cells = <0>;
+            bindings = <&bt BT_PRV>;
+        };
     };
 
     combos { compatible = "zmk,combos"; };
@@ -116,7 +129,7 @@
             >;
 
             sensor-bindings =
-                <&inc_dec_kp C_VOL_DN C_VOL_UP>,
+                <&inc_dec_kp bt_next bt_prev>,
                 <&inc_dec_kp PG_UP PG_DN>;
         };
 
